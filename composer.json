@@ -2,7 +2,7 @@
     "name": "zerolfc/eventbrite-sdk-php",
     "description": "Fork PHP SDK for the Eventbrite API.",
     "require": {
-        "php": ">=5.3",
+        "php": ">=5.3"
     },
     "autoload": {
         "psr-4": {

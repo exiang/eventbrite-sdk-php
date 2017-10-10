@@ -1,5 +1,7 @@
 <?php
 
+namespace zerolfc\eventbrite;
+
 // Access methods.  This file could be auto-generated.
 
 class AccessMethods
@@ -48,7 +50,7 @@ public function get_subcategory($id, $expand=array()) {
 
 /**
 * get_event_search
-* GET /events/search/ 
+* GET /events/search/
 *        Allows you to retrieve a paginated response of public :format:`event` objects from across Eventbrite’s directory, regardless of which user owns the event.
 */
 public function get_event_search($expand=array()) {

@@ -1,6 +1,10 @@
 <?php
 
-require_once('AccessMethods.php');
+namespace zerolfc\eventbrite;
+
+
+use zerolfc\eventbrite\Authenticate;
+
 /**
  * Http client used to perform requests on Eventbrite API.
  */

@@ -7,5 +7,7 @@
         "psr-4": {
             "zerolfc\\eventbrite\\": "lib/"
         }
-    }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

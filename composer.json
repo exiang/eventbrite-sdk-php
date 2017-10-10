@@ -1,5 +1,5 @@
 {
-    "name": "eventbrite/eventbrite-sdk-php",
+    "name": "zerolfc/eventbrite-sdk-php",
     "description": "PHP SDK for the Eventbrite API.",
     "require": {
     },

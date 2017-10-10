@@ -1,9 +1,11 @@
 {
     "name": "zerolfc/eventbrite-sdk-php",
-    "description": "PHP SDK for the Eventbrite API.",
+    "description": "Fork PHP SDK for the Eventbrite API.",
     "require": {
     },
     "autoload": {
-        "psr-4": { "eventbrite-sdk-php\\": "lib/" }
+        "psr-4": {
+            "zerolfc\\eventbrite\\": "lib/"
+        }
     }
 }

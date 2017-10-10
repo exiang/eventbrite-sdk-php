@@ -20,9 +20,7 @@ Clone the repo. Once this is public we can add version control and installation 
 The Eventbrite PHP SDK makes it easy to interact with the Eventbrite API:
 
 .. code-block:: php
-
-    php > require_once('HttpClient.php');
-    php > $client = new HttpClient('TOKEN');
+    php > $client = new zerolfc\eventbrite\HttpClient(USER_TOKEN);
     php > $user = $client->get_user(1234567890);
     php > $user['id'];
     php > 1234567890

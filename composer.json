@@ -9,6 +9,11 @@
             "zerolfc\\eventbrite\\": "lib/"
         }
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "keywords": [
+        "Eventbrite",
+        "event brite",
+        "API",
+        "PHP"
+    ],
+    "license": ["MIT"]
 }

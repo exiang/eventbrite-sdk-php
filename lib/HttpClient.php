@@ -2,9 +2,6 @@
 
 namespace zerolfc\eventbrite;
 
-
-use zerolfc\eventbrite\Authenticate;
-
 /**
  * Http client used to perform requests on Eventbrite API.
  */
@@ -22,33 +19,42 @@ class HttpClient extends AccessMethods
     {
         $this->token = $token;
     }
-    public function get($path, $expand = array())
+
+    public function get($path, $expand = [])
     {
-        return $this->request($path, array(), $expand, $httpMethod = 'GET');
+        return $this->request($path, [], $expand, $httpMethod = 'GET');
     }
-    public function post($path, $data = array())
+
+    public function post($path, $data = [])
     {
-        return $this->request($path, $data, array(), $httpMethod = 'POST');
+        return $this->request($path, $data, [], $httpMethod = 'POST');
     }
-    public function delete($path, $data = array())
+
+    public function delete($path, $data = [])
     {
-        return $this->request($path, $data, array(), $httpMethod = 'DELETE');
+        return $this->request($path, $data, [], $httpMethod = 'DELETE');
     }
+
     public function request($path, $body, $expand, $httpMethod = 'GET')
     {
-        $data = json_encode($body);
+
+        $httpOptions = [
+            'method' => $httpMethod,
+            'header' => "content-type: application/json\r\n",
+            'ignore_errors' => true,
+        ];
+
+        if ($body) {
+            $httpOptions['content'] = json_encode($body);
+        }
+
         // I think this is the only header we need.  If there is a need
         // to pass more headers to the request, we could add a parameter
         // called headers to this function and combine whatever headers are passed
         // in with this header.
-        $options = array(
-            'http'=>array(
-                'method'=>$httpMethod,
-                'header'=>"content-type: application/json\r\n",
-                'content'=>$data,
-                'ignore_errors'=>true
-            )
-        );
+        $options = [
+            'http' => $httpOptions,
+        ];
 
         $url = self::EVENTBRITE_APIv3_BASE . $path . '?token=' . $this->token;
 
@@ -57,12 +63,12 @@ class HttpClient extends AccessMethods
             $url = $url . '&expand=' . $expand_str;
         }
 
-        $context  = stream_context_create($options);
+        $context = stream_context_create($options);
         $result = file_get_contents($url, false, $context);
         /* this is where we will handle connection errors. Eventbrite errors are a part of the response payload. We return errors as an associative array. */
         $response = json_decode($result, true);
-        if ($response == NULL) {
-            $response = array();
+        if ($response == null) {
+            $response = [];
         }
         $response['response_headers'] = $http_response_header;
         return $response;

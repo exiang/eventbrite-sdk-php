@@ -22,15 +22,15 @@ class HttpClient extends AccessMethods
     {
         $this->token = $token;
     }
-    public function get($path, array $expand = array())
+    public function get($path, $expand = array())
     {
         return $this->request($path, array(), $expand, $httpMethod = 'GET');
     }
-    public function post($path, array $data = array())
+    public function post($path, $data = array())
     {
         return $this->request($path, $data, array(), $httpMethod = 'POST');
     }
-    public function delete($path, array $data = array())
+    public function delete($path, $data = array())
     {
         return $this->request($path, $data, array(), $httpMethod = 'DELETE');
     }

@@ -58,9 +58,10 @@ class HttpClient extends AccessMethods
 
         $url = self::EVENTBRITE_APIv3_BASE . $path . '?token=' . $this->token;
 
-        if (!empty($expand)) {
-            $expand_str = join(',', $expand);
-            $url = $url . '&expand=' . $expand_str;
+        if (!empty($expand) && is_array($expand)) {
+
+            $url = $url . '&' . http_build_query($expand);
+
         }
 
         $context = stream_context_create($options);

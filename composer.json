@@ -15,7 +15,5 @@
         "event brite",
         "API",
         "PHP"
-    ],
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    ]
 }

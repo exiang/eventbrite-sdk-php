@@ -4,6 +4,7 @@
     "require": {
         "php": ">=5.3"
     },
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "zerolfc\\eventbrite\\": "lib/"
@@ -15,5 +16,7 @@
         "API",
         "PHP"
     ],
-    "license": "MIT"
+
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

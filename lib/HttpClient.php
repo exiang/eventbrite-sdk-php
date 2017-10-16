@@ -25,17 +25,17 @@ class HttpClient
 
     public function get($path, $data = [])
     {
-        return $this->request($path, $data, [], $httpMethod = 'GET');
+        return $this->request($path, $data, $httpMethod = 'GET');
     }
 
     public function post($path, $data = [])
     {
-        return $this->request($path, $data, [], $httpMethod = 'POST');
+        return $this->request($path, $data, $httpMethod = 'POST');
     }
 
     public function delete($path, $data = [])
     {
-        return $this->request($path, $data, [], $httpMethod = 'DELETE');
+        return $this->request($path, $data, $httpMethod = 'DELETE');
     }
 
     public function request($path, $body, $httpMethod = 'GET')

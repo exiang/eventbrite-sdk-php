@@ -4,10 +4,13 @@ namespace zerolfc\eventbrite;
 
 /**
  * Http client used to perform requests on Eventbrite API.
+ * @doc https://www.eventbrite.co.uk/developer/v3/
  */
-class HttpClient extends AccessMethods
+class HttpClient
 {
+
     protected $token;
+
     const EVENTBRITE_APIv3_BASE = "https://www.eventbriteapi.com/v3";
 
     /**
@@ -20,9 +23,9 @@ class HttpClient extends AccessMethods
         $this->token = $token;
     }
 
-    public function get($path, $expand = [])
+    public function get($path, $data = [])
     {
-        return $this->request($path, [], $expand, $httpMethod = 'GET');
+        return $this->request($path, $data, [], $httpMethod = 'GET');
     }
 
     public function post($path, $data = [])
@@ -35,7 +38,7 @@ class HttpClient extends AccessMethods
         return $this->request($path, $data, [], $httpMethod = 'DELETE');
     }
 
-    public function request($path, $body, $expand, $httpMethod = 'GET')
+    public function request($path, $body, $httpMethod = 'GET')
     {
 
         $httpOptions = [
@@ -58,20 +61,20 @@ class HttpClient extends AccessMethods
 
         $url = self::EVENTBRITE_APIv3_BASE . $path . '?token=' . $this->token;
 
-        if (!empty($expand) && is_array($expand)) {
-
-            $url = $url . '&' . http_build_query($expand);
-
-        }
 
         $context = stream_context_create($options);
+
         $result = file_get_contents($url, false, $context);
         /* this is where we will handle connection errors. Eventbrite errors are a part of the response payload. We return errors as an associative array. */
         $response = json_decode($result, true);
+
         if ($response == null) {
             $response = [];
         }
+
         $response['response_headers'] = $http_response_header;
+
         return $response;
+
     }
 }

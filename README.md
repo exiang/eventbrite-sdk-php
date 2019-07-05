@@ -2,11 +2,6 @@
 eventbrite-sdk-php
 ==================
 
-[![Build Status](https://travis-ci.org/eventbrite/eventbrite-sdk-php.svg?branch=master)](https://travis-ci.org/eventbrite/eventbrite-sdk-php)
-[![Latest Stable Version](https://poser.pugx.org/eventbrite/eventbrite-sdk-php/v/stable)](https://packagist.org/packages/eventbrite/eventbrite-sdk-php)
-[![Total Downloads](https://poser.pugx.org/eventbrite/eventbrite-sdk-php/downloads)](https://packagist.org/packages/eventbrite/eventbrite-sdk-php)
-[![License](https://poser.pugx.org/eden/eventbrite/license)](https://packagist.org/packages/eden/eventbrite)
-
 
 * Official Eventbrite_ SDK for PHP
 * API Reference: https://developer.eventbrite.com/docs/
@@ -21,7 +16,7 @@ The Eventbrite PHP SDK makes it easy to interact with the Eventbrite API:
 
 .. code-block:: php
 
-    php > $client = new zerolfc\eventbrite\HttpClient(USER_TOKEN);
+    php > $client = new exiang\eventbrite\HttpClient(USER_TOKEN);
     php > $user = $client->get_user(1234567890);
     php > $user['id'];
     php > 1234567890
@@ -36,12 +31,7 @@ You can also specify API endpoints manually:
     php > $user['id'];
     1234567890
     php > $user['name'];
-    php > Serena Williams
-
-Contributing
-------------
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/eventbrite/eventbrite-sdk-python.
+    php > Serena William
 
 
 License

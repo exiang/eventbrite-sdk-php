@@ -1,13 +1,13 @@
 {
-    "name": "zerolfc/eventbrite-sdk-php",
-    "description": "Fork PHP SDK for the Eventbrite API.",
+    "name": "exiang/eventbrite-sdk-php",
+    "description": "PHP SDK for the Eventbrite API.",
     "require": {
         "php": ">=5.4"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "zerolfc\\eventbrite\\": "lib/"
+            "exiang\\eventbrite\\": "lib/"
         }
     },
     "keywords": [

@@ -4,19 +4,19 @@ namespace zerolfc\eventbrite;
 
 /**
  * Http client used to perform requests on Eventbrite API.
+ *
  * @doc https://www.eventbrite.co.uk/developer/v3/
  */
 class HttpClient
 {
-
     protected $token;
 
-    const EVENTBRITE_APIv3_BASE = "https://www.eventbriteapi.com/v3";
+    const EVENTBRITE_APIv3_BASE = 'https://www.eventbriteapi.com/v3';
 
     /**
      * Constructor.
      *
-     * @param string $token the user's auth token.
+     * @param string $token the user's auth token
      */
     public function __construct($token)
     {
@@ -40,7 +40,6 @@ class HttpClient
 
     public function request($path, $body, $httpMethod = 'GET')
     {
-
         $httpOptions = [
             'method' => $httpMethod,
             'header' => "content-type: application/json\r\n",
@@ -59,8 +58,11 @@ class HttpClient
             'http' => $httpOptions,
         ];
 
-        $url = self::EVENTBRITE_APIv3_BASE . $path . '?token=' . $this->token;
-
+        $pathParams = '';
+        if (strstr($path, '?')) {
+            list($path, $pathParams) = explode('?', $path);
+        }
+        $url = self::EVENTBRITE_APIv3_BASE.$path.'?token='.$this->token.'&'.$pathParams;
 
         $context = stream_context_create($options);
 
@@ -75,6 +77,5 @@ class HttpClient
         $response['response_headers'] = $http_response_header;
 
         return $response;
-
     }
 }

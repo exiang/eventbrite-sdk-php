@@ -1,6 +1,6 @@
 <?php
 
-namespace zerolfc\eventbrite;
+namespace exiang\eventbrite;
 
 // Access methods.  This file could be auto-generated.
 

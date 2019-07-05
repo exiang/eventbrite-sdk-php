@@ -1,6 +1,6 @@
 <?php
 
-namespace zerolfc\eventbrite;
+namespace exiang\eventbrite;
 
 /**
  * Http client used to perform requests on Eventbrite API.

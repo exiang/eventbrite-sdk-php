@@ -42,7 +42,7 @@ class HttpClient
     {
         $httpOptions = [
             'method' => $httpMethod,
-            'header' => "content-type: application/json\r\n",
+            'header' => sprintf('Authorization: Bearer %s', $this->token),
             'ignore_errors' => true,
         ];
 
@@ -59,10 +59,11 @@ class HttpClient
         ];
 
         $pathParams = '';
+
         if (strstr($path, '?')) {
             list($path, $pathParams) = explode('?', $path);
         }
-        $url = self::EVENTBRITE_APIv3_BASE.$path.'?token='.$this->token.'&'.$pathParams;
+        $url = self::EVENTBRITE_APIv3_BASE.$path.'?'.$pathParams;
 
         $context = stream_context_create($options);
 
